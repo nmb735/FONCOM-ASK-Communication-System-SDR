@@ -1,0 +1,1345 @@
+options:
+  parameters:
+    author: ''
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: ASK
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: ASK_Transmitter_Receiver
+    window_size: (1000,1000)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: carrier_frequency
+  id: variable_qtgui_range
+  parameters:
+    comment: Carrier Frequency
+    gui_hint: ''
+    label: carrier_frequency
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: int
+    start: int(samp_rate/4)
+    step: '100'
+    stop: int(samp_rate/2)
+    value: int(samp_rate/2)
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 568.0]
+    rotation: 0
+    state: enabled
+- name: channel_attenuation
+  id: variable_qtgui_range
+  parameters:
+    comment: Channel Attenuation
+    gui_hint: ''
+    label: channel_attenuation
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '0.1'
+    stop: '1'
+    value: '1'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [880, 912.0]
+    rotation: 0
+    state: enabled
+- name: delay_msg
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: ''
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: int
+    start: '1'
+    step: '1'
+    stop: '72'
+    value: '51'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [440, 2120.0]
+    rotation: 0
+    state: true
+- name: distance_time
+  id: variable_qtgui_range
+  parameters:
+    comment: Distance Time
+    gui_hint: ''
+    label: distance_time
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: int
+    start: '0'
+    step: int(samp_rate/4)
+    stop: int(samp_rate*10)
+    value: '0'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [656, 920.0]
+    rotation: 0
+    state: enabled
+- name: gamma
+  id: variable_qtgui_range
+  parameters:
+    comment: gamma
+    gui_hint: ''
+    label: gamma
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: 100e-4
+    stop: '1'
+    value: 500e-3
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [600, 1688.0]
+    rotation: 0
+    state: enabled
+- name: noise_amplitude
+  id: variable_qtgui_range
+  parameters:
+    comment: Noise Amplitude
+    gui_hint: ''
+    label: noise_amplitude
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '0.1'
+    stop: '2'
+    value: '0'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [760, 1160.0]
+    rotation: 0
+    state: enabled
+- name: num_taps
+  id: variable
+  parameters:
+    comment: ''
+    value: '511'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [856, 456.0]
+    rotation: 0
+    state: enabled
+- name: number_of_points
+  id: variable
+  parameters:
+    comment: ''
+    value: '100'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [248, 8.0]
+    rotation: 0
+    state: enabled
+- name: roll_off
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: 1,1,1,1
+    label: ''
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '0.05'
+    step: '0.05'
+    stop: '1'
+    value: '1'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [944, 440.0]
+    rotation: 0
+    state: true
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: 32e3
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [160, 8.0]
+    rotation: 0
+    state: enabled
+- name: space
+  id: variable
+  parameters:
+    comment: ''
+    value: '10'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [720, 408.0]
+    rotation: 0
+    state: enabled
+- name: analog_noise_source_x_0
+  id: analog_noise_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: noise_amplitude
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_type: analog.GR_GAUSSIAN
+    seed: '0'
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [896, 1160.0]
+    rotation: 0
+    state: enabled
+- name: analog_sig_source_x_0
+  id: analog_sig_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: '1'
+    comment: ''
+    freq: carrier_frequency
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    phase: '0'
+    samp_rate: samp_rate
+    showports: 'False'
+    type: float
+    waveform: analog.GR_COS_WAVE
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [936, 568.0]
+    rotation: 0
+    state: enabled
+- name: blocks_add_xx_0
+  id: blocks_add_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1176, 1088.0]
+    rotation: 0
+    state: enabled
+- name: blocks_char_to_float_0
+  id: blocks_char_to_float
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: "Moddulaci\xF3 2PAM\namb s\xEDmbols -1 i 1"
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    scale: '1'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [504, 336.0]
+    rotation: 0
+    state: enabled
+- name: blocks_complex_to_mag_0
+  id: blocks_complex_to_mag
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [248, 1616.0]
+    rotation: 0
+    state: enabled
+- name: blocks_delay_0
+  id: blocks_delay
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: "Simula el temps de transmissi\xF3"
+    delay: distance_time
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    showports: 'False'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [672, 1080.0]
+    rotation: 0
+    state: enabled
+- name: blocks_delay_1
+  id: blocks_delay
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    delay: delay_msg
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    showports: 'False'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [728, 2120.0]
+    rotation: 0
+    state: true
+- name: blocks_float_to_complex_0
+  id: blocks_float_to_complex
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1272, 440.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_const_vxx_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: "Simula la atenuaci\xF3 del canal"
+    const: channel_attenuation
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [904, 1080.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_xx_0
+  id: blocks_multiply_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1160, 424.0]
+    rotation: 0
+    state: enabled
+- name: blocks_sub_xx_0
+  id: blocks_sub_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [880, 2152.0]
+    rotation: 0
+    state: true
+- name: blocks_threshold_ff_0
+  id: blocks_threshold_ff
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    high: gamma
+    init: '0'
+    low: gamma
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [608, 1592.0]
+    rotation: 0
+    state: enabled
+- name: blocks_throttle2_0
+  id: blocks_throttle2
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ignoretag: 'True'
+    limit: auto
+    maximum: '0.1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1424, 440.0]
+    rotation: 0
+    state: enabled
+- name: blocks_throttle2_1
+  id: blocks_throttle2
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ignoretag: 'True'
+    limit: auto
+    maximum: '0.1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [352, 328.0]
+    rotation: 0
+    state: enabled
+- name: blocks_throttle2_1_0
+  id: blocks_throttle2
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ignoretag: 'True'
+    limit: auto
+    maximum: '0.1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [968, 1600.0]
+    rotation: 0
+    state: enabled
+- name: epy_block_0
+  id: epy_block
+  parameters:
+    _source_code: "import numpy as np\nfrom gnuradio import gr\n\nclass MessageSink(gr.sync_block):\n\
+      \    \"\"\"\n    Custom GNU Radio block that takes a stream of floats as input\
+      \ and prints a string corresponding to the UTF-8 encoding of the bits.\n\n \
+      \   Attributes:\n        bits (list): The message converted into a sequence\
+      \ of bits.\n        chars (list): The characters of the current message.\n \
+      \       in_message (bool): A flag indicating whether we are currently within\
+      \ a message.\n        delay (int): The delay in samples.\n        last_message\
+      \ (str): The last printed message.\n\n    Methods:\n        float_to_bit(f):\
+      \ Converts a float into a bit using a threshold.\n        bits_to_char(bits):\
+      \ Converts a sequence of bits into a character.\n        work(input_items, output_items):\
+      \ The main function called by GNU Radio to process the data.\n    \"\"\"\n \
+      \   def __init__(self, delay=100):  # Default delay, just in case (can be changed\
+      \ later)\n        gr.sync_block.__init__(self,\n            name=\"Message Sink\"\
+      ,\n            in_sig=[np.float32],\n            out_sig=None)\n        self.bits\
+      \ = [] # List to store the bits\n        self.chars = [] # List to store the\
+      \ characters\n        self.in_message = False  # Flag to indicate if we are\
+      \ within a message\n        self.delay = delay  # Delay in samples\n       \
+      \ self.last_message = \"\" # Last printed message\n\n    # Function to convert\
+      \ a float into a bit\n    def float_to_bit(self, f):\n        return 1 if f\
+      \ > 0.5 else 0 # Threshold to decide bit value (at 0.5)\n\n    # Function to\
+      \ convert a sequence of bits into a character\n    def bits_to_char(self, bits):\n\
+      \        return chr(int(''.join(map(str, bits)), 2))\n\n    def work(self, input_items,\
+      \ output_items):\n        ninput_items = len(input_items[0])\n        \n   \
+      \     # Convert floats to bits using the threshold\n        self.bits.extend(self.float_to_bit(bit)\
+      \ for bit in input_items[0][:ninput_items])\n\n        if len(self.bits) < self.delay:\n\
+      \            # Not enough bits to start processing, return\n            return\
+      \ ninput_items\n\n        # Apply delay\n        self.bits = self.bits[self.delay:]\n\
+      \n        # Main processing loop\n        while len(self.bits) >= 8:\n     \
+      \       byte = self.bits[:8] # Get the next byte\n            self.bits = self.bits[8:]\
+      \  # Remove processed bits\n\n            # Check for synchronization sequence\n\
+      \            if byte == [1, 1, 1, 1, 1, 1, 1, 1]:\n                if self.bits[:8]\
+      \ == [0, 0, 0, 0, 0, 0, 0, 0]:\n                    self.bits = self.bits[8:]\
+      \  # Remove the second part of the synchronization sequence\n              \
+      \      self.in_message = True  # Start processing\n                continue\n\
+      \n            # Process the message\n            if self.in_message:\n     \
+      \           try:\n                    if byte == [1, 1, 1, 1, 1, 1, 1, 1]:\n\
+      \                        # Skip appending the start sequence to the message\n\
+      \                        continue\n                    # Convert the byte to\
+      \ a character\n                    char = self.bits_to_char(byte)\n        \
+      \            if char == '\\0':\n                        # End of message\n \
+      \                       message = ''.join(self.chars)\n                    \
+      \    if message != self.last_message:  # Only print the message if it has changed\n\
+      \                            print(f\"Received message: {message}\")  # Print\
+      \ the message\n                            self.last_message = message  # Update\
+      \ the last printed message\n                        self.chars = []  # Clear\
+      \ the list of characters for the next message\n                        self.in_message\
+      \ = False  # Reset the message flag\n                    else:\n           \
+      \             self.chars.append(char)  # Add the character to the list of characters\n\
+      \                except ValueError:\n                    # Invalid character,\
+      \ skip this byte\n                    continue\n\n        return ninput_items\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    delay: 3+distance_time
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    _io_cache: '(''Message Sink'', ''MessageSink'', [(''delay'', ''100'')], [(''0'',
+      ''float'', 1)], [], ''\n    Custom GNU Radio block that takes a stream of floats
+      as input and prints a string corresponding to the UTF-8 encoding of the bits.\n\n    Attributes:\n        bits
+      (list): The message converted into a sequence of bits.\n        chars (list):
+      The characters of the current message.\n        in_message (bool): A flag indicating
+      whether we are currently within a message.\n        delay (int): The delay in
+      samples.\n        last_message (str): The last printed message.\n\n    Methods:\n        float_to_bit(f):
+      Converts a float into a bit using a threshold.\n        bits_to_char(bits):
+      Converts a sequence of bits into a character.\n        work(input_items, output_items):
+      The main function called by GNU Radio to process the data.\n    '', [''delay''])'
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1160, 1712.0]
+    rotation: 0
+    state: enabled
+- name: epy_block_1
+  id: epy_block
+  parameters:
+    _source_code: "import numpy as np\nfrom gnuradio import gr\n\nclass MessageBitVectorSource(gr.sync_block):\n\
+      \    \"\"\"\n    Custom GNU Radio block for converting a message into a bit\
+      \ vector source.\n\n    Attributes:\n        bits (list): The message converted\
+      \ into a sequence of bits.\n        index (int): The current position in the\
+      \ bit sequence.\n\n    Methods:\n        string_to_bits(s): Converts a string\
+      \ into a sequence of bits.\n        char_to_bits(char): Converts a character\
+      \ into a sequence of bits.\n        work(input_items, output_items): The main\
+      \ function called by GNU Radio to process the data.\n    \"\"\"\n    def __init__(self,\
+      \ message=\"Hello\"):  # Default message, just in case (can be changed later)\n\
+      \        gr.sync_block.__init__(self,\n            name=\"Message Bit Vector\
+      \ Source\",\n            in_sig=None,\n            out_sig=[np.byte])\n    \
+      \    # Add the synchronization sequence, start sequence, and the frame to the\
+      \ message\n        self.bits = [1]*8 + self.string_to_bits('\\0' + message +\
+      \ '\\0')\n        self.index = 0  # Initialize the index to track current position\
+      \ in the bit sequence\n\n    def string_to_bits(self, s):\n        return [b\
+      \ for character in s for b in self.char_to_bits(character)]\n\n    def char_to_bits(self,\
+      \ char):\n        return [int(bit) for b in char.encode('utf-8') for bit in\
+      \ bin(b)[2:].zfill(8)]\n\n    def work(self, input_items, output_items):\n \
+      \       noutput_items = len(output_items[0])\n        for i in range(noutput_items):\n\
+      \            output_items[0][i] = self.bits[self.index]\n            self.index\
+      \ = (self.index + 1) % len(self.bits)  # Loop back to the start if at the end\n\
+      \        return noutput_items\n    \n\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    message: '"FONCOM"'
+    minoutbuf: '0'
+  states:
+    _io_cache: '(''Message Bit Vector Source'', ''MessageBitVectorSource'', [(''message'',
+      "''Hello''")], [], [(''0'', ''byte'', 1)], ''\n    Custom GNU Radio block for
+      converting a message into a bit vector source.\n\n    Attributes:\n        bits
+      (list): The message converted into a sequence of bits.\n        index (int):
+      The current position in the bit sequence.\n\n    Methods:\n        string_to_bits(s):
+      Converts a string into a sequence of bits.\n        char_to_bits(char): Converts
+      a character into a sequence of bits.\n        work(input_items, output_items):
+      The main function called by GNU Radio to process the data.\n    '', [])'
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [144, 336.0]
+    rotation: 0
+    state: enabled
+- name: fir_filter_xxx_0
+  id: fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    decim: '10'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_delay: int(space/2)
+    taps: '[1]'
+    type: fff
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [760, 1600.0]
+    rotation: 0
+    state: enabled
+- name: interp_fir_filter_xxx_0_0
+  id: interp_fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: Impuls
+    interp: space
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_delay: '0'
+    taps: '[1]+[0]*(space-1)'
+    type: fff
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [672, 328.0]
+    rotation: 0
+    state: enabled
+- name: qtgui_time_sink_x_0_0
+  id: qtgui_time_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '0.75'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'False'
+    axislabels: 'True'
+    color1: green
+    color10: dark blue
+    color2: red
+    color3: blue
+    color4: black
+    color5: cyan
+    color6: magenta
+    color7: yellow
+    color8: dark red
+    color9: dark green
+    comment: ''
+    ctrlpanel: 'True'
+    entags: 'True'
+    grid: 'True'
+    gui_hint: ''
+    label1: "S\xEDmbol"
+    label10: Signal 10
+    label2: Pols rect
+    label3: y(t) pols RC
+    label4: Signal 4
+    label5: Signal 5
+    label6: Signal 6
+    label7: Signal 7
+    label8: Signal 8
+    label9: Signal 9
+    legend: 'True'
+    marker1: '0'
+    marker10: '-1'
+    marker2: '-1'
+    marker3: '-1'
+    marker4: '-1'
+    marker5: '-1'
+    marker6: '-1'
+    marker7: '-1'
+    marker8: '-1'
+    marker9: '-1'
+    name: '"Message sent"'
+    nconnections: '1'
+    size: number_of_points
+    srate: samp_rate
+    stemplot: 'False'
+    style1: '2'
+    style10: '1'
+    style2: '1'
+    style3: '1'
+    style4: '1'
+    style5: '1'
+    style6: '1'
+    style7: '1'
+    style8: '1'
+    style9: '1'
+    tr_chan: '0'
+    tr_delay: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_slope: qtgui.TRIG_SLOPE_POS
+    tr_tag: '""'
+    type: float
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '2'
+    width3: '2'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    ylabel: Amplitude
+    ymax: '2'
+    ymin: '-2'
+    yunit: '"Time"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [680, 216.0]
+    rotation: 0
+    state: enabled
+- name: qtgui_time_sink_x_0_0_0
+  id: qtgui_time_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '0.75'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'False'
+    axislabels: 'True'
+    color1: green
+    color10: dark blue
+    color2: red
+    color3: blue
+    color4: black
+    color5: cyan
+    color6: magenta
+    color7: yellow
+    color8: dark red
+    color9: dark green
+    comment: ''
+    ctrlpanel: 'True'
+    entags: 'True'
+    grid: 'True'
+    gui_hint: ''
+    label1: "S\xEDmbol"
+    label10: Signal 10
+    label2: Pols rect
+    label3: y(t) pols RC
+    label4: Signal 4
+    label5: Signal 5
+    label6: Signal 6
+    label7: Signal 7
+    label8: Signal 8
+    label9: Signal 9
+    legend: 'True'
+    marker1: '0'
+    marker10: '-1'
+    marker2: '-1'
+    marker3: '-1'
+    marker4: '-1'
+    marker5: '-1'
+    marker6: '-1'
+    marker7: '-1'
+    marker8: '-1'
+    marker9: '-1'
+    name: '"Transmission"'
+    nconnections: '1'
+    size: number_of_points
+    srate: samp_rate
+    stemplot: 'False'
+    style1: '2'
+    style10: '1'
+    style2: '1'
+    style3: '1'
+    style4: '1'
+    style5: '1'
+    style6: '1'
+    style7: '1'
+    style8: '1'
+    style9: '1'
+    tr_chan: '0'
+    tr_delay: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_slope: qtgui.TRIG_SLOPE_POS
+    tr_tag: '""'
+    type: complex
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '2'
+    width3: '2'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    ylabel: Amplitude
+    ymax: '2'
+    ymin: '-2'
+    yunit: '"Time"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1584, 368.0]
+    rotation: 0
+    state: enabled
+- name: qtgui_time_sink_x_0_0_0_0
+  id: qtgui_time_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '0.75'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'False'
+    axislabels: 'True'
+    color1: green
+    color10: dark blue
+    color2: red
+    color3: blue
+    color4: black
+    color5: cyan
+    color6: magenta
+    color7: yellow
+    color8: dark red
+    color9: dark green
+    comment: ''
+    ctrlpanel: 'True'
+    entags: 'True'
+    grid: 'True'
+    gui_hint: ''
+    label1: "S\xEDmbol"
+    label10: Signal 10
+    label2: Pols rect
+    label3: y(t) pols RC
+    label4: Signal 4
+    label5: Signal 5
+    label6: Signal 6
+    label7: Signal 7
+    label8: Signal 8
+    label9: Signal 9
+    legend: 'True'
+    marker1: '0'
+    marker10: '-1'
+    marker2: '-1'
+    marker3: '-1'
+    marker4: '-1'
+    marker5: '-1'
+    marker6: '-1'
+    marker7: '-1'
+    marker8: '-1'
+    marker9: '-1'
+    name: '"Reception"'
+    nconnections: '1'
+    size: number_of_points
+    srate: samp_rate
+    stemplot: 'False'
+    style1: '2'
+    style10: '1'
+    style2: '1'
+    style3: '1'
+    style4: '1'
+    style5: '1'
+    style6: '1'
+    style7: '1'
+    style8: '1'
+    style9: '1'
+    tr_chan: '0'
+    tr_delay: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_slope: qtgui.TRIG_SLOPE_POS
+    tr_tag: '""'
+    type: complex
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '2'
+    width3: '2'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    ylabel: Amplitude
+    ymax: '2'
+    ymin: '-2'
+    yunit: '"Time"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1320, 1016.0]
+    rotation: 0
+    state: enabled
+- name: qtgui_time_sink_x_0_0_0_1
+  id: qtgui_time_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '0.75'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'False'
+    axislabels: 'True'
+    color1: green
+    color10: dark blue
+    color2: red
+    color3: blue
+    color4: black
+    color5: cyan
+    color6: magenta
+    color7: yellow
+    color8: dark red
+    color9: dark green
+    comment: ''
+    ctrlpanel: 'True'
+    entags: 'True'
+    grid: 'True'
+    gui_hint: ''
+    label1: "S\xEDmbol"
+    label10: Signal 10
+    label2: Pols rect
+    label3: y(t) pols RC
+    label4: Signal 4
+    label5: Signal 5
+    label6: Signal 6
+    label7: Signal 7
+    label8: Signal 8
+    label9: Signal 9
+    legend: 'True'
+    marker1: '0'
+    marker10: '-1'
+    marker2: '-1'
+    marker3: '-1'
+    marker4: '-1'
+    marker5: '-1'
+    marker6: '-1'
+    marker7: '-1'
+    marker8: '-1'
+    marker9: '-1'
+    name: '"Errors"'
+    nconnections: '1'
+    size: number_of_points
+    srate: samp_rate
+    stemplot: 'False'
+    style1: '2'
+    style10: '1'
+    style2: '1'
+    style3: '1'
+    style4: '1'
+    style5: '1'
+    style6: '1'
+    style7: '1'
+    style8: '1'
+    style9: '1'
+    tr_chan: '0'
+    tr_delay: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_slope: qtgui.TRIG_SLOPE_POS
+    tr_tag: '""'
+    type: float
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '2'
+    width3: '2'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    ylabel: Amplitude
+    ymax: '2'
+    ymin: '-2'
+    yunit: '"Time"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1016, 2144.0]
+    rotation: 0
+    state: enabled
+- name: qtgui_time_sink_x_0_0_1
+  id: qtgui_time_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '0.75'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'False'
+    axislabels: 'True'
+    color1: green
+    color10: dark blue
+    color2: red
+    color3: blue
+    color4: black
+    color5: cyan
+    color6: magenta
+    color7: yellow
+    color8: dark red
+    color9: dark green
+    comment: ''
+    ctrlpanel: 'True'
+    entags: 'True'
+    grid: 'True'
+    gui_hint: ''
+    label1: "S\xEDmbol"
+    label10: Signal 10
+    label2: Pols rect
+    label3: y(t) pols RC
+    label4: Signal 4
+    label5: Signal 5
+    label6: Signal 6
+    label7: Signal 7
+    label8: Signal 8
+    label9: Signal 9
+    legend: 'True'
+    marker1: '0'
+    marker10: '-1'
+    marker2: '-1'
+    marker3: '-1'
+    marker4: '-1'
+    marker5: '-1'
+    marker6: '-1'
+    marker7: '-1'
+    marker8: '-1'
+    marker9: '-1'
+    name: '"Message recieved"'
+    nconnections: '1'
+    size: number_of_points
+    srate: samp_rate
+    stemplot: 'False'
+    style1: '2'
+    style10: '1'
+    style2: '1'
+    style3: '1'
+    style4: '1'
+    style5: '1'
+    style6: '1'
+    style7: '1'
+    style8: '1'
+    style9: '1'
+    tr_chan: '0'
+    tr_delay: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_slope: qtgui.TRIG_SLOPE_POS
+    tr_tag: '""'
+    type: float
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '2'
+    width3: '2'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    ylabel: Amplitude
+    ymax: '2'
+    ymin: '-2'
+    yunit: '"Time"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1144, 1584.0]
+    rotation: 0
+    state: true
+- name: root_raised_cosine_filter_0_0
+  id: root_raised_cosine_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha: roll_off
+    comment: p(t)
+    decim: '1'
+    gain: '10'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    ntaps: num_taps
+    samp_rate: samp_rate
+    sym_rate: samp_rate/space
+    type: fir_filter_fff
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [864, 296.0]
+    rotation: 0
+    state: true
+- name: root_raised_cosine_filter_0_0_0
+  id: root_raised_cosine_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha: roll_off
+    comment: p(t)
+    decim: '1'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    ntaps: num_taps
+    samp_rate: samp_rate
+    sym_rate: samp_rate/space
+    type: interp_fir_filter_fff
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [400, 1568.0]
+    rotation: 0
+    state: true
+- name: virtual_sink_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: Transmission
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1584, 480.0]
+    rotation: 0
+    state: enabled
+- name: virtual_sink_0_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: Reception
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1320, 1128.0]
+    rotation: 0
+    state: enabled
+- name: virtual_sink_1
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: Original
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [680, 160.0]
+    rotation: 0
+    state: true
+- name: virtual_sink_2
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: R
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1160, 1512.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0
+  id: virtual_source
+  parameters:
+    alias: R
+    comment: ''
+    stream_id: Reception
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [72, 1608.0]
+    rotation: 0
+    state: enabled
+- name: virtual_source_0_0
+  id: virtual_source
+  parameters:
+    alias: R
+    comment: ''
+    stream_id: Transmission
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [408, 1080.0]
+    rotation: 0
+    state: enabled
+- name: virtual_source_1
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: Original
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [560, 2120.0]
+    rotation: 0
+    state: true
+- name: virtual_source_2
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: R
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [560, 2192.0]
+    rotation: 0
+    state: enabled
+
+connections:
+- [analog_noise_source_x_0, '0', blocks_add_xx_0, '1']
+- [analog_sig_source_x_0, '0', blocks_multiply_xx_0, '1']
+- [blocks_add_xx_0, '0', qtgui_time_sink_x_0_0_0_0, '0']
+- [blocks_add_xx_0, '0', virtual_sink_0_0, '0']
+- [blocks_char_to_float_0, '0', interp_fir_filter_xxx_0_0, '0']
+- [blocks_char_to_float_0, '0', qtgui_time_sink_x_0_0, '0']
+- [blocks_char_to_float_0, '0', virtual_sink_1, '0']
+- [blocks_complex_to_mag_0, '0', root_raised_cosine_filter_0_0_0, '0']
+- [blocks_delay_0, '0', blocks_multiply_const_vxx_0, '0']
+- [blocks_delay_1, '0', blocks_sub_xx_0, '0']
+- [blocks_float_to_complex_0, '0', blocks_throttle2_0, '0']
+- [blocks_multiply_const_vxx_0, '0', blocks_add_xx_0, '0']
+- [blocks_multiply_xx_0, '0', blocks_float_to_complex_0, '0']
+- [blocks_sub_xx_0, '0', qtgui_time_sink_x_0_0_0_1, '0']
+- [blocks_threshold_ff_0, '0', fir_filter_xxx_0, '0']
+- [blocks_throttle2_0, '0', qtgui_time_sink_x_0_0_0, '0']
+- [blocks_throttle2_0, '0', virtual_sink_0, '0']
+- [blocks_throttle2_1, '0', blocks_char_to_float_0, '0']
+- [blocks_throttle2_1_0, '0', epy_block_0, '0']
+- [blocks_throttle2_1_0, '0', qtgui_time_sink_x_0_0_1, '0']
+- [blocks_throttle2_1_0, '0', virtual_sink_2, '0']
+- [epy_block_1, '0', blocks_throttle2_1, '0']
+- [fir_filter_xxx_0, '0', blocks_throttle2_1_0, '0']
+- [interp_fir_filter_xxx_0_0, '0', root_raised_cosine_filter_0_0, '0']
+- [root_raised_cosine_filter_0_0, '0', blocks_multiply_xx_0, '0']
+- [root_raised_cosine_filter_0_0_0, '0', blocks_threshold_ff_0, '0']
+- [virtual_source_0, '0', blocks_complex_to_mag_0, '0']
+- [virtual_source_0_0, '0', blocks_delay_0, '0']
+- [virtual_source_1, '0', blocks_delay_1, '0']
+- [virtual_source_2, '0', blocks_sub_xx_0, '1']
+
+metadata:
+  file_format: 1
+  grc_version: 3.10.8.0
